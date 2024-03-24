@@ -1,0 +1,59 @@
+<head>
+    <meta charset="utf-8">
+    <title>Test aplikacji NODE.JS</title>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
+</head>
+<body>
+    <p id="message">Hello from HTML5...</p>
+    <input type="text" id="messageInput"/>
+    <button type="button" onclick="addData()">Wyślij wiadomość</button>
+
+    <h2>Wiadomość</h2>
+    <div id="list"></div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
+        import { getDatabase, ref, onValue, push} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+      
+    const firebaseConfig = {
+    apiKey: "AIzaSyC7LmQJi9Jv01u37BMJi5X1mlR9-uBhgfg",
+    authDomain: "demoproject-6f2fe.firebaseapp.com",
+    databaseURL: "https://demoproject-6f2fe-default-rtdb.europe-west1.firebasedatabase.app", // Zaktualizowany URL
+    projectId: "demoproject-6f2fe",
+    storageBucket: "demoproject-6f2fe.appspot.com",
+    messagingSenderId: "553165756264",
+    appId: "1:553165756264:web:118a85f0ec388c927d28dd",
+    measurementId: "G-G10TBYGEMC"
+  };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const analytics = getAnalytics(app);
+
+        let messageRef = ref(database,'messages');
+        let messageInput = document.getElementById('messageInput');
+        let messages = document.getElementById('list');
+
+        function addData() {
+            const message = messageInput.value;
+            push(messageRef,{
+                field: message
+            });
+            messageInput.value = '';
+        }
+    
+        onValue(messageRef,(snapshot) => {
+            messages.innerHTML = '';
+            snapshot.forEach((childSnapshot) => {
+                const message = childSnapshot.val().field;
+                const p = document.createElement('p');
+                p.textContent = message;
+                messages.appendChild(p);
+            });
+        });
+        window.addData = addData;
+      </script>
+</body>
