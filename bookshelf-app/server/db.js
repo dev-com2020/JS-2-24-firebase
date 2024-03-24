@@ -16,7 +16,7 @@ knex.schema.hasTable('books').then((exists) => {
             table.increments('id').primary()
             table.string('author')
             table.string('title')
-            table.string('pubDate')
+            table.string('pubData')
             table.integer('rating')
         })
         .then(()=>{

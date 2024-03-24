@@ -1,8 +1,12 @@
 import React from 'react';
-import { render } from 'react-dom';
 import './index.css';
-import { Bookshelf } from '';
+import { Bookshelf } from './components/bookshelf';
+import ReactDOM from 'react-dom';
 
-const root = document.getElementById('root');
+ReactDOM.render(
+        <React.StrictMode>
+            <Bookshelf />
+        </React.StrictMode>,
+        document.getElementById('root')
 
-render(<Bookshelf />, root);
+);
