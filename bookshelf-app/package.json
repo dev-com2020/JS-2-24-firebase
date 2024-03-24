@@ -17,8 +17,13 @@
     "express": "4.17.1",
     "helmet": "3.22.0",
     "knex": "2.4.0",
-    "sqlite3": "4.1.1"
+    "sqlite3": "4.1.1",
+    "nodemon": "2.0.3",
+    "typescript": "3.8.3"
   },
+
+  "prox" : "http://localhost:4001",
+  "main" : "src/index.tsx",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
