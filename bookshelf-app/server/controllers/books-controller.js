@@ -46,6 +46,6 @@ exports.bookReset = async (req,res) => {
     .then(() => 
     res.json({message: 'Lista książek wyczyszczona'}))
     .catch(err => {
-        res.json({message: `Mamy błąd ${err} podczas czyczesnia`})
+        res.json({message: `Mamy błąd ${err} podczas czyszczenia`})
     })
 }

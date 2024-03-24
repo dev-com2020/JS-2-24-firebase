@@ -6,7 +6,7 @@ import { BookshelfList } from './bookshelf-list'
 export const Bookshelf = () => {
     const [author, setAuthor] = useState('')
     const [title, setTitle] = useState('')
-    const [pubData, setPubDate] = useState('')
+    const [pubDate, setPubDate] = useState('')
     const [rating, setRating] = useState('')
     const [books, setBooks] = useState([])
     const [loading, setLoading] = useState(true)
@@ -36,7 +36,7 @@ export const Bookshelf = () => {
         .post('http://localhost:4001/books/create', {
             author: author,
             title: title,
-            pubData: pubData,
+            pubDate: pubDate,
             rating: rating
         })
         .then(res => {
@@ -47,7 +47,7 @@ export const Bookshelf = () => {
     }
 
     const handleBookSubmit = () => {
-        if (author.length > 0 && title.length > 0 && pubData.length > 0 && rating.length > 0){
+        if (author.length > 0 && title.length > 0 && pubDate.length > 0 && rating.length > 0){
             handleBookCreate()
             console.log('Książka została dodana')
             handleInputsReset()
@@ -56,7 +56,7 @@ export const Bookshelf = () => {
 
     const handleBookRemove = (id: number, title: string) => {
         axios
-        .put('http://localhost:4001/books/delete', {id: id})
+        .put('http://localhost:4001/books/delete', {id:id})
         .then(() => {
             console.log('Książka usunięta')
             fetchBooks()
@@ -89,7 +89,7 @@ export const Bookshelf = () => {
                 <div>
                     <fieldset>
                         <label>Wpisz date publikacji:</label>
-                        <input type='text' id='pubData' value={pubData} onChange={(e) => setPubDate(e.currentTarget.value)}></input>
+                        <input type='text' id='pubData' value={pubDate} onChange={(e) => setPubDate(e.currentTarget.value)}></input>
                     </fieldset>
                 </div>
                 <div>
