@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-import { BookshelfList } from '/.bookshelf-list'
-import { response } from 'express'
+import { BookshelfList } from './bookshelf-list'
 
 export const Bookshelf = () => {
     const [author, setAuthor] = useState('')
     const [title, setTitle] = useState('')
     const [pubData, setPubDate] = useState('')
     const [rating, setRating] = useState('')
-    const [booksAll, setBooks] = useState([])
+    const [books, setBooks] = useState([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
