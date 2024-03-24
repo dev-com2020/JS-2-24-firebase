@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import { db } from './firebase-config'
-import { collection, getDocs, addDocs, doc, updateDoc, deleteDoc } from '@firebase/firestore';
+import { collection, getDocs, addDoc, doc, updateDoc, deleteDoc } from '@firebase/firestore';
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -18,7 +18,7 @@ function App() {
   },[])
 
   const CreateUser = async () => {
-    await addDocs(UsersCollectionRef, {Name: name, age: age})
+    await addDoc(UsersCollectionRef, {Name: name, age: age})
     window.location.reload()
   }
 
